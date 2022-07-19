@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/7c1eb7e29e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Peyton's Place</title>
+    <link rel="icon" href="mars.jpg" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Noto+Sans+JP:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+      @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+      :root {
+        overflow: hidden;
+        --main-radius: 5px;
+        --main-padding: 5px;
+        font-family: "poppins", sans-serif;
+        background: #243965;
+      }
+
+      .container {
+        display: grid;
+        height: 100vh;
+        width: 100vw;
+        grid-template-columns: 1fr 10fr;
+        grid-template-rows: 0.2fr;
+        grid-template-areas:
+          "nav nav nav nav"
+          "sidebar main main main"
+          "sidebar content1 content2 content3"
+          "sidebar footer footer footer";
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 800;
+        color: white;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 45px;
+        font-size: 1.99rem;
+        padding-left: 450px;
+        grid-area: nav;
+        border-radius: var(--main-radius);
+        padding-top: var(--main-padding);
+      }
+      nav ul li {
+        list-style-type: none;
+        display: inline-block;
+        padding: 10px 25px;
+      }
+      .img1 {
+        margin-top: 285px;
+        height: 300px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      nav ul li a:hover {
+        color: #55acee;
+        transition: 0.4s;
+      }
+     
+      .social-platforms {
+        position: relative;
+        margin-top: 425px;
+        top: 100px;
+        top: 25vh;
+        margin-left: -2100px;
+        font-size: 1.5rem;
+        text-align: center;
+        justify-content: space-between;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      /*Pen code from this point on*/
+      .btn {
+        clear: both;
+        white-space: nowrap;
+        font-size: 0.8em;
+        display: inline-block;
+        border-radius: 5px;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.35);
+        margin: 2px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        transition: all 0.5s;
+        overflow: hidden;
+      }
+
+      .btn:hover {
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.45);
+      }
+
+      .btn:focus {
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
+      }
+
+      .btn > span,
+      .btn-icon > i {
+        float: left;
+        padding: 13px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        transition: all 0.5s;
+        line-height: 1em;
+      }
+
+      .btn > span {
+        padding: 14px 18px 16px;
+        white-space: nowrap;
+        color: #fff;
+        background: #b8b8b8;
+      }
+
+      .btn:focus > span {
+        background: #9a9a9a;
+      }
+
+      .btn-icon > i {
+        border-radius: 5px 0 0 5px;
+        position: relative;
+        width: 13px;
+        text-align: center;
+        font-size: 1.25em;
+        color: #fff;
+        background: #212121;
+      }
+
+      .btn-icon > i:after {
+        content: "";
+        border: 8px solid;
+        border-color: transparent transparent transparent #222;
+        position: absolute;
+        top: 13px;
+        right: -15px;
+      }
+
+      .btn-icon:hover > i,
+      .btn-icon:focus > i {
+        color: #fff;
+      }
+
+      .btn-icon > span {
+        border-radius: 0 5px 5px 0;
+      }
+
+      /*Facebook*/
+      .btn-facebook:hover > i,
+      .btn-facebook:focus > i {
+        color: #3b5998;
+      }
+
+      .btn-facebook > span {
+        background: #3b5998;
+      }
+
+      /*Twitter*/
+      .btn-twitter:hover > i,
+      .btn-twitter:focus > i {
+        color: #55acee;
+      }
+
+      .btn-twitter > span {
+        background: #55acee;
+      }
+
+      /*IMDB*/
+      .btn-imdb:hover > i,
+      .btn-imdb:focus > i {
+        color: goldenrod;
+      }
+
+      .btn-imdb > span {
+        background: goldenrod;
+      }
+
+      /*Instagram*/
+      .btn-youtube:hover > i,
+      .btn-youtube:focus > i {
+        color: #ff0000;
+      }
+
+      .btn-youtube > span {
+        background: #ff0000;
+      }
+
+      /*Tiktok*/
+      .btn-tiktok:hover > i,
+      .btn-tiktok:focus > i {
+        color: #ff0050;
+      }
+
+      .btn-tiktok > span {
+        background: #ff0050;
+      }
+
+      #hamburger-icon {
+        margin: auto 0;
+        display: none;
+        cursor: pointer;
+      }
+
+      #hamburger-icon div {
+        width: 35px;
+        height: 3px;
+        background-color: #fff;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+
+      .open .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+        transform: rotate(-45deg) translate(-6px, 6px);
+      }
+
+      .open .bar2 {
+        opacity: 0;
+      }
+
+      .open .bar3 {
+        -webkit-transform: rotate(45deg) translate(-6px, -8px);
+        transform: rotate(45deg) translate(-6px, -8px);
+      }
+
+      .open .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        height: calc(100vh - 50px);
+        width: 100%;
+      }
+
+      .mobile-menu li {
+        list-style: none;
+        margin-left: 225px;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+
+      .mobile-menu li a {
+        color: red;
+        font-size: 22px;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      .mobile-menu li a:hover {
+        color: rgb(251, 9, 9);
+        transition: 0.4s;
+      }
+
+      main {
+        grid-area: main;
+        overflow: hidden;
+        border-radius: var(--main-radius);
+        padding-top: var(--main-padding);
+      }
+
+      form {
+        margin-left: 5px;
+        align-self: center;
+        margin-top: 35px;
+        max-width: 700px;
+      }
+
+      .input-group {
+        margin-bottom: 30px;
+        position: relative;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        outline: 0;
+        border: 1px solid #fff;
+        color: #fff;
+        background: transparent;
+        font-size: 15px;
+      }
+
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .row .input-group {
+        flex-basis: 48%;
+      }
+      button {
+        padding: 10px;
+        color: #fff;
+        outline: none;
+        background: transparent;
+        border: 1px solid #fff;
+        width: 103%;
+        cursor: pointer;
+      }
+      #sidebar {
+        background: red;
+        grid-area: sidebar;
+        border-radius: var(--main-radius);
+        padding-top: var(--main-padding);
+      }
+      #content1 {
+        background: rgb(154, 137, 203);
+        grid-area: content1;
+        border-radius: var(--main-radius);
+        padding-top: var(--main-padding);
+      }
+      #content2 {
+        background: red;
+        grid-area: content2;
+        border-radius: var(--main-radius);
+        padding-top: var(--main-padding);
+      }
+      #content3 {
+        background: rgb(154, 137, 203);
+        grid-area: content3;
+        border-radius: var(--main-radius);
+        padding-top: var(--main-padding);
+      }
+      footer {
+        margin-top: 65px;
+        height: 50px;
+        background: red;
+        grid-area: footer;
+        border-radius: var(--main-radius);
+        padding-top: var(--main-padding);
+      }
+
+      @media only screen and (max-width: 1440px) {
+        .container {
+          grid-template-columns: 1fr;
+          grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr;
+          grid-template-areas:
+            "nav"
+            "footer";
+        }
+
+        nav {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          padding-top: 5px;
+          padding-left: 8%;
+          padding-right: 8%;
+          font-size: 0.99rem;
+          padding-left: 00px;
+          grid-area: nav;
+          border-radius: var(--main-radius);
+          padding-top: var(--main-padding);
+        }
+
+        form {
+          margin-top: 60px;
+          margin-left: 275px;
+          width: 90%;
+          max-width: 800px;
+          margin-bottom: -775px;
+        }
+
+        .input-group {
+          margin-bottom: 30px;
+          position: relative;
+        }
+        input,
+        textarea {
+          width: 100%;
+          padding: 10px;
+          outline: 0;
+          border: 1px solid #fff;
+          color: #fff;
+          background: transparent;
+          font-size: 15px;
+        }
+
+        label {
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          padding: 10px;
+          color: #fff;
+          cursor: text;
+          transition: 0.2s;
+        }
+        input:focus ~ label,
+        input:valid ~ label,
+        textarea:focus ~ label,
+        textarea:valid ~ label {
+          top: -35px;
+          font-size: 14px;
+        }
+
+        #hamburger-icon {
+          position: fixed;
+          display: block;
+        }
+        .img1 {
+          display: none;
+        }
+        .mobile-menu li {
+          list-style: none;
+          margin-left: 905px;
+          text-decoration: none;
+          font-weight: bold;
+          text-transform: capitalize;
+          margin-bottom: 10px;
+        }
+
+        .mobile-menu li a {
+          color: #fff;
+          margin-left: 450px;
+          font-size: 18px;
+          overflow: hidden;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          text-decoration: none;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+        .mobile-menu li a:hover {
+          color: #55acee;
+          transition: 0.4s;
+        }
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .row .input-group {
+          flex-basis: 48.5%;
+        }
+        button {
+          padding: 10px;
+          color: #fff;
+          outline: none;
+          background: transparent;
+          border: 1px solid #fff;
+          width: 102%;
+          cursor: pointer;
+        }
+        html {
+          overflow: hidden;
+          --main-radius: 5px;
+          --main-padding: 5px;
+        }
+        img {
+          height: 250px;
+          padding-top: 300px;
+        }
+
+        .social-platforms {
+          margin-left: -75px;
+          margin-top: 500px;
+          position: relative;
+          font-size: 1rem;
+          text-align: center;
+          overflow: hidden;
+        }
+      }
+
+      @media only screen and (max-width: 800px) {
+        .container {
+          grid-template-columns: 1fr;
+          grid-template-rows: 0.4fr 0.4fr 6fr;
+          grid-template-areas:
+            "nav"
+            "footer";
+        }
+        nav {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          padding-top: 5px;
+          padding-left: 8%;
+          padding-right: 8%;
+          font-size: 0.99rem;
+          padding-left: 00px;
+          grid-area: nav;
+          border-radius: var(--main-radius);
+          padding-top: var(--main-padding);
+        }
+
+        form {
+          margin-top: 305px;
+          width: 100%;
+          max-width: 650px;
+          margin-left: 35px;
+          margin-bottom: -255px;
+        }
+
+        .input-group {
+          margin-bottom: 3px;
+          position: relative;
+        }
+        input,
+        textarea {
+          width: 100%;
+          padding: 20px;
+          outline: 0;
+          border: 1px solid #fff;
+          color: #fff;
+          background: transparent;
+          font-size: 15px;
+        }
+
+        label {
+          height: 70%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          padding: 5px;
+          color: #fff;
+          cursor: text;
+          transition: 0.2s;
+        }
+        input:focus ~ label,
+        input:valid ~ label,
+        textarea:focus ~ label,
+        textarea:valid ~ label {
+          top: -30px;
+          font-size: 20px;
+        }
+
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .row .input-group {
+          flex-basis: 46%;
+        }
+        button {
+          padding: 10px;
+          color: #fff;
+          outline: none;
+          background: transparent;
+          border: 1px solid #fff;
+          width: 100%;
+          cursor: pointer;
+        }
+
+        #hamburger-icon {
+          display: block;
+          position: fixed;
+        }
+
+        .mobile-menu li {
+          list-style: none;
+          margin-left: 455px;
+          text-decoration: none;
+          font-weight: bold;
+          text-transform: capitalize;
+          margin-bottom: 10px;
+        }
+
+        .mobile-menu li a {
+          color: #fff;
+          margin-left: 205px;
+          font-size: 32px;
+          overflow: hidden;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          text-decoration: none;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+        .mobile-menu li a:hover {
+          color: #55acee;
+          transition: 0.4s;
+        }
+        html {
+          overflow: hidden;
+          height: 100%;
+        }
+        main {
+          grid-area: main;
+          overflow: hidden;
+          border-radius: var(--main-radius);
+          padding-top: var(--main-padding);
+        }
+
+        .social-platforms {
+          margin-left: 2.5px;
+          margin-top: 86px;
+          position: relative;
+          font-size: 1rem;
+          text-align: center;
+          overflow: hidden;
+        }
+      }
+      @media only screen and (max-width: 425px) {
+        .container {
+          grid-template-columns: 1fr;
+          grid-template-rows: 0.4fr 0.5fr 6fr;
+          grid-template-areas:
+            "nav"
+            "footer";
+        }
+        nav {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          padding-top: 5px;
+          padding-left: 8%;
+          padding-right: 8%;
+          font-size: 0.99rem;
+          padding-left: 00px;
+          grid-area: nav;
+          border-radius: var(--main-radius);
+          padding-top: var(--main-padding);
+        }
+
+        form {
+          margin-top: 145px;
+          width: 75%;
+          max-width: 450px;
+          margin-left: 20px;
+          margin-bottom: -135px;
+        }
+
+        .input-group {
+          margin-bottom: 3px;
+          position: relative;
+        }
+        input,
+        textarea {
+          width: 100%;
+          padding: 10px;
+          outline: 0;
+          border: 1px solid #fff;
+          color: #fff;
+          background: transparent;
+          font-size: 12px;
+        }
+
+        label {
+          height: 70%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          padding: 5px;
+          color: #fff;
+          cursor: text;
+          transition: 0.2s;
+        }
+        input:focus ~ label,
+        input:valid ~ label,
+        textarea:focus ~ label,
+        textarea:valid ~ label {
+          top: -30px;
+          font-size: 10px;
+        }
+
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .row .input-group {
+          flex-basis: 43%;
+        }
+        button {
+          padding: 10px;
+          color: #fff;
+          outline: none;
+          background: transparent;
+          border: 1px solid #fff;
+          width: 110%;
+          cursor: pointer;
+        }
+
+        #hamburger-icon {
+          display: block;
+          position: fixed;
+        }
+
+        .mobile-menu li {
+          margin-top: -10px;
+          list-style: none;
+          margin-left: 3px;
+          text-decoration: none;
+          font-weight: bold;
+          text-transform: capitalize;
+          margin-bottom: 10px;
+        }
+
+        .mobile-menu li a {
+          color: #fff;
+          margin-left: 175px;
+          font-size: 16px;
+          overflow: hidden;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          text-decoration: none;
+          font-weight: bold;
+          text-transform: capitalize;
+          margin-top: 25px;
+        }
+        .mobile-menu li a:hover {
+          color: rgb(251, 9, 9);
+          transition: 0.4s;
+        }
+        html {
+          overflow: hidden;
+          height: 100%;
+        }
+        main {
+          grid-area: main;
+          overflow: hidden;
+          border-radius: var(--main-radius);
+          padding-top: var(--main-padding);
+        }
+
+        .social-platforms {
+          align-items: center;
+          margin-left: -7px;
+          margin-top: 5px;
+          position: relative;
+          font-size: 1rem;
+          text-align: center;
+          overflow: hidden;
+        }
+      }
+    </style>
+  </head>
+
+  <main>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="index1.html">Home</a></li>
+          <li><a href="#">Bio</a></li>
+          <li><a href="#">Headshots</a></li>
+          <li><a href="#">Reels</a></li>
+          <li><a href="./contact.html">Booking</a></li>
+        </ul>
+      </nav>
+      <div><img src="./img/sag.png" class="img1" alt="Sag" /></div>
+
+      <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <ul class="mobile-menu">
+          <li><a href="./index1.html">Home</a></li>
+          <li><a href="./Bio.html">Bio</a></li>
+          <li><a href="./headshots.html">Headshots</a></li>
+          <li><a href="./reels.html">Reels</a></li>
+          <li><a href="./contact.html">Booking</a></li>
+        </ul>
+      </div>
+
+      <form action="mailto:iamishoos@gmail.com" method="POST">
+        <div class="row">
+          <div class="input-group">
+            <input type="text" name="inputBox" placeholder="Name"required />
+          </div>
+          <div class="input-group">
+            <input type="text" name="inputBox" placeholder="Phone Number" />
+          </div>
+        </div>
+        <div class="input-group">
+          <input type="text" name="inputBox" placeholder="Email Address" required /> 
+          </label>
+        </div>
+        <div class="input-group">
+          <textarea type="text" name="inputBox" placeholder="Your Message" rows="8" required></textarea>
+          
+        </div>
+        <button type="submit"><a href = "mailto: iamishoos@gmail.com"></a>SUBMIT</button>
+      </form>
+
+      <div class="social-platforms">
+        <a
+          class="btn btn-icon btn-facebook"
+          href="https://www.facebook.com/CarolsDaughterMorningStar"
+          ><i class="fa fa-facebook"></i><span>Facebook</span></a
+        >
+        <a
+          class="btn btn-icon btn-tiktok"
+          href="https://www.tiktok.com/@mylifeiswonderful1?lang=en"
+          ><i class="fa fa-tiktok"></i><span>TikTok</span></a
+        >
+        <a
+          class="btn btn-icon btn-imdb"
+          href="https://www.imdb.com/name/nm6041110/"
+          ><i class="fa fa-imdb"></i><span>IMDB</span></a
+        >
+        <a
+          class="btn btn-icon btn-youtube"
+          href="https://www.youtube.com/user/deemightymoto"
+          ><i class="fa fa-youtube"></i><span>YouTube</span></a
+        >
+        <a
+          class="btn btn-icon btn-twitter"
+          href="https://twitter.com/daneckapeyton"
+          ><i class="fa fa-twitter"></i><span>Twitter</span></a
+        >
+      </div>
+    </div>
+  </main>
+  <script src="index.js"></script>
+</html>
